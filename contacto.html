@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="pt">
+
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+   <!--=============== FAVICON ===============-->
+   <link rel="shortcut icon" href="assets/img/favicon.png" type="image/x-icon">
+
+   <!--=============== REMIXICONS ===============-->
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.6.0/remixicon.min.css">
+
+   <!--=============== SWIPER CSS ===============-->
+   <link rel="stylesheet" href="assets/css/swiper-bundle.min.css">
+
+   <!--=============== CSS ===============-->
+   <link rel="stylesheet" href="assets/css/contacto.css">
+
+   <title>Markendev - Agência de web designer</title>
+</head>
+
+<body>
+   <!--==================== HEADER ====================-->
+   <header class="header" id="header">
+      <nav class="nav container">
+         <a href="index.html" class="nav__logo"> <i class="ri-global-line"></i> <span>Markendev</span></a>
+         <div class="nav__menu" id="nav-menu">
+             <ul class="nav__list">
+               <li>
+                  <a href="index.html" class="nav__link">Início</a>
+               </li>
+
+               <li>
+                  <a href="sobre.html" class="nav__link">Sobre nós</a>
+               </li>
+
+               <li>
+                  <a href="guia.html" class="nav__link">Guia de contrato</a>
+               </li>
+
+               <li>
+                  <a href="planos.html" class="nav__link">Planos e preços</a>
+               </li>
+
+               <li>
+                  <a href="#" class="nav__link">Contacto</a>
+               </li>
+            </ul>
+
+         </div>
+
+         <!-- Toggle button -->
+         <div class="nav__toggle" id="nav-toggle">
+            <i class="ri-menu-5-fill"></i>
+         </div>
+      </nav>
+   </header>
+
+   <!--==================== MAIN ====================-->
+      <div class="contacto__data ">
+         <h2 class="section__titlee">Nossas informações de contacto</h2>
+         <p class="contacto__description">Nossa página de contacto está aberta para todos os tipos de comunicação.
+             Pode utilizar o formulário, e-mail ou WhatsApp para suporte, pedidos de criação de websites, esclarecimento 
+            de dúvidas ou qualquer outro assunto. Estamos prontos para atender de forma rápida e profissional.</p>
+      </div>
+      <!--==================== MAP ====================-->
+      
+      <section class="map section" id="map">
+           
+         <div class="map__container container grid">
+
+            <div class="map__area">
+                  <form action="#" class="contact__form grid" id="contact-form">
+                  <div class="contact__group grid">
+                     <input type="text" name="user_name" placeholder="Nome da empresa" required class="contact__input">
+                     <input type="text" name="user_email" placeholder="Categoria (ex: hotel)" required class="contact__input">
+                  </div>
+
+                  <textarea name="user_message" placeholder="Mensagem" class="contact__input contact__area"></textarea>
+
+                  <button type="submit" class="button contact__button">Enviar mensagem</button>
+
+                  <p class="contact__message" id="contact-message"></p>
+               </form>
+            </div>
+
+            <div class="map__content grid">
+               <div class="map__card">
+                  <h3 class="map__title">
+                     <i class="ri-mail-line"></i>
+                     E-mail
+                  </h3>
+
+                  <address class="map__info">
+                     <a href="#" target="_blank" class="email">agenciamarkendev@gmail.com
+</a>
+                  </address>
+               </div>
+
+               <div class="map__card">
+                  <h3 class="map__title">
+                     <i class="ri-24-hours-line"></i>
+                     Hora de atendimento
+                  </h3>
+
+                  <address class="map__info">
+                   Domingo - Sábado<br> 24h por dias e 7 dias por semana
+                  </address>
+               </div>
+
+               <div class="map__card">
+                  <h3 class="map__title">
+                     <i class="ri-whatsapp-line"></i>
+                     Whatsapp
+                  </h3>
+
+                  <address class="map__info">
+                     <a href="#" target="_blank" class="email">(+244) 953545808</a>
+                  </address>
+               </div>
+
+            </div>
+         </div>
+
+      </section>
+   
+
+   <!--==================== FOOTER ====================-->
+   <footer class="footer">
+      <div class="footer__container container grid">
+         <a href="#" class="footer__logo"><i class="ri-global-line"></i> Markendev</a>
+         <div class="footer__content grid">
+            <a href="#" class="footer__link">Termos de uso</a>
+            <a href="#" class="footer__link">Política de privacidade</a>
+
+            <div class="footer__social">
+               <a href="#" target="_blank" >
+                  <i class="ri-linkedin-fill"></i>
+               </a>
+
+               <a href="#" target="_blank" >
+                  <i class="ri-instagram-line"></i>
+               </a>
+
+               <a href="#" target="_blank" >
+                  <i class="ri-facebook-fill"></i>
+               </a>
+            </div>
+         </div>
+      </div>
+
+      <span class="footer__copy">
+         &#169; Todos os direitos reservados por markendev
+      </span>
+
+
+   </footer>
+
+   <!--========== SCROLL UP ==========-->
+   <a href="#" class="scrollup" id="scroll-up"> <i class="ri-arrow-up-long-line"></i></a>
+
+
+   <!--=============== SCROLLREVEAL ===============-->
+   <script src=""></script>
+
+   <!--=============== SWIPER JS ===============-->
+   <script src="assets/js/swiper-bundle.min.js"></script>
+
+   <!--=============== MAIN JS ===============-->
+   <script src="assets/js/main.js"></script>
+   <script>
+      document.addEventListener('DOMContentLoaded', function() {
+    const contactForm = document.getElementById('contact-form');
+    const contactMessage = document.getElementById('contact-message');
+    
+    // Número do WhatsApp (apenas números)
+    const phoneNumber = '244953545808';
+    
+    if (contactForm) {
+        contactForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Capturar os valores dos campos
+            const empresa = document.querySelector('input[name="user_name"]').value.trim();
+            const categoria = document.querySelector('input[name="user_email"]').value.trim();
+            const mensagem = document.querySelector('textarea[name="user_message"]').value.trim();
+            
+            // Validar se os campos obrigatórios estão preenchidos
+            if (!empresa || !categoria) {
+                showMessage('Por favor, preencha o nome da empresa e a categoria.', 'error');
+                return;
+            }
+            
+            // Criar a mensagem formatada
+            const mensagemFormatada = `*Contato via Site*\n\n` +
+                                     `*🏢 Nome da Empresa:*\n${empresa}\n\n` +
+                                     `*📋 Categoria:*\n${categoria}\n\n` +
+                                     `*💬 Mensagem:*\n${mensagem || 'Nenhuma mensagem fornecida'}`;
+            
+            // Codificar a mensagem para URL
+            const mensagemCodificada = encodeURIComponent(mensagemFormatada);
+            
+            // Criar o link do WhatsApp
+            const whatsappLink = `https://wa.me/${phoneNumber}?text=${mensagemCodificada}`;
+            
+            // Abrir o WhatsApp em uma nova aba
+            window.open(whatsappLink, '_blank');
+            
+            // Mostrar mensagem de sucesso
+            showMessage('Redirecionando para o WhatsApp...', 'success');
+            
+            // Opcional: Limpar o formulário após o envio
+            // contactForm.reset();
+            
+            // Opcional: Fechar a mensagem de sucesso após alguns segundos
+            setTimeout(() => {
+                if (contactMessage) {
+                    contactMessage.style.display = 'none';
+                }
+            }, 5000);
+        });
+    }
+    
+    // Função para mostrar mensagens de feedback
+    function showMessage(message, type) {
+        if (contactMessage) {
+            contactMessage.textContent = message;
+            contactMessage.className = `contact__message ${type}`;
+            contactMessage.style.display = 'block';
+            
+            // Estilizar a mensagem
+            if (type === 'error') {
+                contactMessage.style.color = '#dc3545';
+                contactMessage.style.backgroundColor = '#f8d7da';
+            } else {
+                contactMessage.style.color = '#28a745';
+                contactMessage.style.backgroundColor = '#d4edda';
+            }
+            
+            contactMessage.style.padding = '10px';
+            contactMessage.style.borderRadius = '5px';
+            contactMessage.style.marginTop = '10px';
+            contactMessage.style.textAlign = 'center';
+            
+            // Esconder a mensagem após alguns segundos
+            setTimeout(() => {
+                if (contactMessage) {
+                    contactMessage.style.display = 'none';
+                }
+            }, 4000);
+        }
+    }
+    
+    // Validação em tempo real (opcional)
+    const inputs = document.querySelectorAll('.contact__input');
+    inputs.forEach(input => {
+        input.addEventListener('input', function() {
+            if (contactMessage && contactMessage.style.display === 'block') {
+                contactMessage.style.display = 'none';
+            }
+        });
+    });
+});
+   </script>
+</body>
+
+</html>

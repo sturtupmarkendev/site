@@ -1,0 +1,792 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Guia de Contrato | Markendev</title>
+  
+  <!-- Remix Icon (apenas para header/footer, como pedido) -->
+  <link href="https://cdn.jsdelivr.net/npm/remixicon@4.2.0/fonts/remixicon.css" rel="stylesheet">
+
+  
+   <!--=============== FAVICON ===============-->
+   <link rel="shortcut icon" href="assets/img/favicon.png" type="image/x-icon">
+
+  
+  <!-- Fontes & CSS base (exatamente como você forneceu) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Aclonica&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Indie+Flower&display=swap" rel="stylesheet">
+  
+  <style>
+    /* =============== VARIABLES & BASE (do seu código original) =============== */
+    :root {
+      --header-height: 3.5rem;
+      --first-color: #388f3b;
+      --first-color-alt: hsl(122, 46%, 34%);
+      --first-color-light: hsl(137, 89%, 85%);
+      --gradient-color: linear-gradient(180deg, hsl(122, 44%, 49%) 0%, hsl(122, 46%, 29%) 100%);
+      --title-color: #131613;
+      --text-color: hsl(122, 8%, 40%);
+      --text-color-light: hsl(122, 8%, 60%);
+      --white-color: hsl(137, 80%, 98%);
+      --dark-color: hsl(122, 8%, 8%);
+      --body-color: hsl(137, 70%, 96%);
+      --container-color: hsl(137, 80%, 99%);
+      --shadow-first-color: hsla(122, 44%, 39%, 0.3);
+      --shadow-small: 0 4px 8px hsla(122, 20%, 8%, 0.1);
+      --shadow-big: 0 2px 16px hsla(122, 20%, 8%, 0.1);
+      --shadow-img-small: drop-shadow(0 4px 8px hsla(122, 20%, 8%, 0.2));
+      --shadow-img-big: drop-shadow(0 16px 4px hsla(122, 20%, 8%, 0.3));
+      --body-font: "Montserrat", sans-serif;
+      --biggest-font-size: 2.25rem;
+      --bigger-font-size: 1.5rem;
+      --h1-font-size: 1.5rem;
+      --h2-font-size: 1.25rem;
+      --h3-font-size: 1rem;
+      --normal-font-size: 0.938rem;
+      --small-font-size: 0.813rem;
+      --smaller-font-size: 0.75rem;
+      --font-regular: 400;
+      --font-medium: 500;
+      --font-semi-bold: 600;
+      --font-bold: 700;
+      --z-tooltip: 10;
+      --z-fixed: 100;
+    }
+    
+    @media screen and (min-width: 1150px) {
+      :root {
+        --biggest-font-size: 4rem;
+        --bigger-font-size: 3rem;
+        --h1-font-size: 2.25rem;
+        --h2-font-size: 1.5rem;
+        --h3-font-size: 1.25rem;
+        --normal-font-size: 1rem;
+        --small-font-size: 0.875rem;
+        --smaller-font-size: 0.813rem;
+      }
+    }
+    
+    * {
+      box-sizing: border-box;
+      padding: 0;
+      margin: 0;
+    }
+    
+    html {
+      scroll-behavior: smooth;
+    }
+    
+    body {
+      font-family: var(--body-font);
+      font-size: var(--normal-font-size);
+      background-color: var(--body-color);
+      color: var(--text-color);
+      transition: background-color 0.4s;
+    }
+    
+    h1, h2, h3, h4 {
+      color: var(--title-color);
+      font-weight: var(--font-bold);
+    }
+    
+    h1, h2 {
+      font-family: "Aclonica", sans-serif;
+    }
+    
+    ul {
+      list-style: none;
+    }
+    
+    a {
+      text-decoration: none;
+    }
+    
+    img {
+      display: block;
+      max-width: 100%;
+      height: auto;
+    }
+    
+    input, button, textarea {
+      border: none;
+      outline: none;
+    }
+    
+    .container {
+      max-width: 1120px;
+      margin-inline: 1.5rem;
+    }
+    
+    .grid {
+      display: grid;
+      gap: 1.5rem;
+    }
+    
+    .section {
+      padding-block: 5rem 1rem;
+    }
+    
+    .section__title {
+      font-size: var(--bigger-font-size);
+      margin-bottom: 2rem;
+      margin-top: 4rem;
+      text-align: center;
+    }
+    
+    .section__subtitle {
+      font-size: var(--normal-font-size);
+      color: var(--first-color);
+      margin-bottom: 0.25rem;
+      text-align: center;
+    }
+    
+    .main {
+      overflow: hidden;
+    }
+    
+    ::selection {
+      background: var(--first-color);
+      color: var(--white-color);
+    }
+    
+    ::-moz-selection {
+      background: var(--first-color);
+      color: var(--white-color);
+    }
+    
+    ::-webkit-scrollbar {
+      width: 0.6rem;
+      border-radius: 1rem;
+      background-color: hsl(133, 32%, 70%);
+    }
+    
+    ::-webkit-scrollbar-thumb {
+      background-color: hsl(138, 32%, 45%);
+    }
+
+    .link{
+        color: var(--first-color);
+        font-weight:600;
+    }
+    
+    /* =============== HEADER (seu código exato) =============== */
+    .header {
+      position: fixed;
+      width: 100%;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 2000;
+      transition: background-color 0.4s, box-shadow 0.4s;
+      background-color: var(--body-color);
+    }
+    
+    .nav {
+      position: relative;
+      height: var(--header-height);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      z-index: 2001;
+    }
+    
+    .nav__logo {
+      display: flex;
+      align-items: center;
+      column-gap: 0.25rem;
+    }
+    
+    .nav__logo span {
+      font-size: 1.5rem;
+      font-weight: var(--font-bold);
+      color: var(--first-color);
+      font-family: "Indie Flower", cursive;
+    }
+    
+    .nav__logo i {
+      font-size: 2rem;
+      color: var(--title-color);
+      transition: color 0.4s;
+    }
+    
+    .nav__toggle {
+      display: flex;
+      font-size: 1.5rem;
+      color: var(--title-color);
+      cursor: pointer;
+      transition: transform 0.4s;
+    }
+    
+    @media screen and (max-width: 1150px) {
+      .nav__menu {
+        position: fixed;
+        top: 5rem;
+        left: -200%;
+        right: 0;
+        margin: 0 auto;
+        width: 75%;
+        box-shadow: var(--shadow-big);
+        background-color: var(--body-color);
+        padding: 3.5rem;
+        border-radius: 3rem;
+        border: 3px solid var(--first-color);
+        transition: left 0.4s, background-color 0.4s, box-shadow 0.4s;
+      }
+    }
+    
+    .nav__list {
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      row-gap: 1.5rem;
+    }
+    
+    .nav__link {
+      color: var(--title-color);
+      font-weight: var(--font-semi-bold);
+      transition: color 0.4s;
+    }
+    
+    .nav__link:hover {
+      color: var(--first-color-alt);
+    }
+    
+    .show-menu {
+      left: 0;
+    }
+    
+    .show-menu + .nav__toggle {
+      transform: rotate(90deg);
+    }
+    
+    .scroll-header {
+      background-color: rgba(255, 255, 255, 0.2);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    }
+    
+    /* =============== FOOTER (seu código) =============== */
+    .footer {
+      padding-block: 3rem 2rem;
+    }
+    
+    .footer__container {
+      row-gap: 2rem;
+    }
+    
+    .footer__logo {
+      font-size: var(--h1-font-size);
+      color: var(--title-color);
+      font-family: "Indie Flower", cursive;
+      justify-self: center;
+    }
+    
+    .footer__logo i {
+      color: var(--first-color);
+    }
+    
+    .footer__content {
+      grid-template-columns: repeat(2, max-content);
+      justify-content: center;
+    }
+    
+    .footer__link {
+      color: var(--text-color);
+    }
+    
+    .footer__social {
+      grid-column: 1 / 3;
+      display: flex;
+      justify-content: center;
+      column-gap: 1rem;
+    }
+    
+    .footer__social a {
+      width: 32px;
+      height: 32px;
+      background-color: var(--first-color);
+      color: var(--title-color);
+      font-size: 1.5rem;
+      border-radius: 0.5rem;
+      display: grid;
+      place-items: center;
+      transition: transform 0.4s ease;
+    }
+    
+    .footer__social a:hover {
+      transform: translateY(-0.3rem);
+    }
+    
+    .footer__copy {
+      display: block;
+      text-align: center;
+      font-size: var(--small-font-size);
+      margin-top: 3.5rem;
+    }
+    
+    /* =============== SCROLL UP =============== */
+    .scrollup {
+      position: fixed;
+      right: 1.5rem;
+      bottom: -50%;
+      background-color: var(--first-color);
+      color: var(--white-color);
+      padding: 0.5rem;
+      border-radius: 0.5rem;
+      font-size: 1.2rem;
+      box-shadow: var(--shadow-small);
+      z-index: var(--z-tooltip);
+      transition: bottom 0.4s, background-color 0.4s;
+      display: inline-flex;
+    }
+    
+    .scrollup:hover {
+      background-color: var(--first-color-alt);
+    }
+    
+    .show-scroll {
+      bottom: 3rem;
+    }
+    
+    /* =============== AJUSTES RESPONSIVOS (do seu código) =============== */
+    @media screen and (max-width: 360px) {
+      .container {
+        margin-inline: 1rem;
+      }
+      .footer__content {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+      .footer__social {
+        grid-column: 1;
+      }
+      .footer__content {
+        grid-template-columns: 1fr;
+        justify-items: center;
+      }
+    }
+    
+    @media screen and (min-width: 540px) {
+      .nav__menu {
+        width: 50%;
+      }
+    }
+    
+    @media screen and (min-width: 768px) {
+      .footer__social {
+        grid-column: initial;
+      }
+      .footer__content {
+        grid-template-columns: repeat(3, 1fr);
+        align-items: center;
+      }
+      .footer__link:nth-child(1) {
+        justify-self: start;
+      }
+      .footer__link:nth-child(2) {
+        order: 2;
+        justify-self: end;
+      }
+    }
+    
+    @media screen and (min-width: 1150px) {
+      .container {
+        margin-inline: auto;
+      }
+      .nav {
+        height: calc(var(--header-height) + 2rem);
+      }
+      .nav__toggle {
+        display: none;
+      }
+      .nav__list {
+        flex-direction: row;
+        column-gap: 4rem;
+      }
+      .nav__menu {
+        width: initial;
+        display: flex;
+        column-gap: 4rem;
+        align-items: center;
+      }
+      .footer {
+        padding-block: 5rem 3rem;
+      }
+      .footer__container {
+        row-gap: 3.5rem;
+      }
+    }
+    
+    /* =============== ESTILOS EXCLUSIVOS DA PÁGINA GUIA (sem ícones no conteúdo) =============== */
+    .guia-container {
+      padding-top: calc(var(--header-height) + 2rem);
+    }
+    
+    .guia-descricao {
+      text-align: center;
+      max-width: 720px;
+      margin: 0 auto 2.5rem;
+      font-size: var(--normal-font-size);
+      color: var(--text-color);
+      line-height: 1.6;
+    }
+    
+    .card-guia {
+      background-color: var(--container-color);
+      border-radius: 1.5rem;
+      padding: 2rem 1.8rem;
+      box-shadow: var(--shadow-small);
+      border: 1px solid rgba(56, 143, 59, 0.1);
+      margin-bottom: 2rem;
+    }
+    
+    .card-guia h2 {
+      font-family: var(--body-font);
+      font-weight: var(--font-bold);
+      font-size: 1.5rem;
+      color: var(--first-color);
+      margin-bottom: 1.5rem;
+      border-left: 5px solid var(--first-color);
+      padding-left: 1rem;
+    }
+    
+    .metodo-item {
+      margin-bottom: 2.5rem;
+    }
+    
+    .metodo-titulo {
+      font-weight: var(--font-bold);
+      font-size: 1.25rem;
+      color: var(--title-color);
+      margin-bottom: 0.75rem;
+    }
+    
+    .metodo-descricao {
+      color: var(--text-color);
+      margin-bottom: 0.75rem;
+      line-height: 1.5;
+    }
+    
+    .lista-simples {
+      list-style: disc;
+      padding-left: 1.5rem;
+      margin-top: 0.5rem;
+      color: var(--text-color);
+    }
+    
+    .lista-simples li {
+      margin-bottom: 0.4rem;
+    }
+    
+    .badge-extra {
+      display: inline-block;
+      background-color: var(--first-color-light);
+      color: var(--first-color-alt);
+      font-weight: var(--font-semi-bold);
+      padding: 0.2rem 0.8rem;
+      border-radius: 2rem;
+      font-size: 0.8rem;
+      margin-left: 0.5rem;
+    }
+    
+    .tabela-prazos {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 1rem;
+    }
+    
+    .tabela-prazos th {
+      text-align: left;
+      padding: 0.75rem 0.5rem;
+      color: var(--title-color);
+      font-weight: var(--font-semi-bold);
+      border-bottom: 2px solid var(--first-color);
+    }
+    
+    .tabela-prazos td {
+      padding: 0.75rem 0.5rem;
+      border-bottom: 1px solid rgba(0,0,0,0.05);
+      color: var(--text-color);
+    }
+    
+    .tabela-prazos tr:last-child td {
+      border-bottom: none;
+    }
+    
+    .metodo-pagamento-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem 2rem;
+      margin-top: 1rem;
+    }
+    
+    .pagamento-item {
+      background-color: var(--body-color);
+      padding: 0.6rem 1.2rem;
+      border-radius: 2rem;
+      font-weight: var(--font-medium);
+      color: var(--title-color);
+      border: 1px solid var(--first-color-light);
+    }
+    
+    .destaque-recomendado {
+      background-color: var(--first-color);
+      color: white;
+      border: none;
+    }
+    
+    /* ajustes de margem */
+    .mt-4 {
+      margin-top: 2rem;
+    }
+    
+    .observacao {
+      font-size: var(--small-font-size);
+      color: var(--text-color-light);
+      margin-top: 1.5rem;
+      font-style: italic;
+    }
+  </style>
+</head>
+<body>
+  <!--==================== HEADER ====================-->
+  <header class="header" id="header">
+    <nav class="nav container">
+      <a href="index.html" class="nav__logo"> 
+        <i class="ri-global-line"></i> 
+        <span>Markendev</span>
+      </a>
+      <div class="nav__menu" id="nav-menu">
+        <ul class="nav__list">
+          <li><a href="index.html#home" class="nav__link">Início</a></li>
+          <li><a href="sobre.html" class="nav__link">Sobre nós</a></li>
+          <li><a href="guia.html" class="nav__link">Guia de contrato</a></li>
+          <li><a href="planos.html" class="nav__link">Planos e preços</a></li>
+          <li><a href="contacto.html" class="nav__link">Contacto</a></li>
+        </ul>
+      </div>
+      <div class="nav__toggle" id="nav-toggle">
+        <i class="ri-menu-5-fill nav__toggle1"></i>
+      </div>
+    </nav>
+  </header>
+
+  <!--==================== MAIN ====================-->
+  <main class="main">
+    <section class="guia-container container">
+      <!-- Título principal com descrição -->
+      <h1 class="section__title">Guia de Contrato</h1>
+      <p class="guia-descricao">
+        Transparência e flexibilidade: conheça nossos métodos de contratação, prazos estimados e opções de pagamento. 
+        Cada projeto é único, mas aqui você encontra todas as informações para começar com segurança.
+      </p>
+      
+      <!-- MÉTODOS DE CONTRATO -->
+      <div class="card-guia">
+        <h2>Métodos de contrato</h2>
+        
+        <div class="metodo-item">
+          <div class="metodo-titulo">1. Pagamento 50% antes e 50% depois</div>
+          <p class="metodo-descricao">
+            Modelo tradicional e direto: o cliente realiza o pagamento de 50% do valor total para iniciarmos o desenvolvimento. 
+            Após a conclusão e aprovação final do site, os 50% restantes são liquidados.
+          </p>
+          <ul class="lista-simples">
+            <li>Ideal para quem prefere um fluxo simples e previsível.</li>
+            <li>Sem taxas adicionais – o valor do plano é exatamente o contratado.</li>
+            <li>Entrega do site ocorre após a confirmação do segundo pagamento.</li>
+            <li>Aprovação final com direito a ajustes dentro do escopo acordado.</li>
+          </ul>
+        </div>
+        
+        <div class="metodo-item">
+          <div class="metodo-titulo">
+            2. Desenvolvimento progressivo (10% → 50%) 
+            <span class="badge-extra">+15% no valor total</span>
+          </div>
+          <p class="metodo-descricao">
+            Nesta modalidade, iniciamos o desenvolvimento do site com um compromisso reduzido. Quando atingirmos 
+            <strong>10% de progresso visível</strong> (estrutura base, primeiras telas funcionais), o cliente efetua 50% do pagamento. 
+            O restante é parcelado ou acertado na entrega.
+          </p>
+          <ul class="lista-simples">
+            <li>Maior confiança para ambas as partes: você vê o trabalho antes de investir metade.</li>
+            <li>Acompanhamento semanal do progresso através de link de staging.</li>
+            <li>Devido à flexibilidade de fluxo de caixa, este método possui acréscimo de <strong>15%</strong> sobre o valor do plano.</li>
+            <li>Após os 10% iniciais, o cronograma segue normalmente com entregas parciais.</li>
+          </ul>
+        </div>
+        
+        <p class="observacao">
+          * Independentemente do método, o escopo do projeto é detalhado em contrato e assinado digitalmente. 
+          Alterações fora do escopo podem implicar em aditivos de prazo e valor.
+        </p>
+      </div>
+      
+      <!-- PRAZOS POR PLANO -->
+      <div class="card-guia">
+        <h2>Prazos estimados</h2>
+        <p style="margin-bottom: 1.5rem;">O prazo de entrega varia conforme a complexidade do plano escolhido. 
+            Abaixo os prazos médios considerando disponibilidade imediata da nossa
+             equipa e feedback do cliente em até 48h. Caso de duvida clique           <a href="planos.html" target="_blank" class="link">aqui</a>
+ para ver a tabela de preços</p>
+        
+        <table class="tabela-prazos">
+          <thead>
+            <tr>
+              <th>Plano</th>
+              <th>Duração estimada</th>
+              <th>Observação</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Plano kwanza</strong> (Site institucional / One-page)</td>
+              <td>1 semana e 4 dias</td>
+              <td>Inclui até 10  páginas</td>
+            </tr>
+            <tr>
+              <td><strong>Plano Luanda</strong> (Site multipáginas / Catálogo)</td>
+              <td>2 semanas e 3 dias</td>
+              <td>Estrutura de até 28 páginas personalizadas</td>
+            </tr>
+            <tr>
+              <td><strong>Plano Angola pro</strong> (E-commerce ou sistema sob medida)</td>
+              <td>5 semanas</td>
+              <td>Integração com meios de pagamento, gestão de produtos</td>
+            </tr>
+          </tbody>
+        </table>
+        
+        <p class="observacao" style="margin-top: 1.8rem;">
+          Os prazos podem sofrer pequenas variações dependendo da agilidade no envio de conteúdos (textos, imagens) por parte do cliente. 
+          Em caso de atraso na entrega de materiais, o cronograma é ajustado proporcionalmente.
+        </p>
+      </div>
+      
+      <!-- MÉTODOS DE PAGAMENTO -->
+      <div class="card-guia">
+        <h2>Métodos de pagamento aceitos</h2>
+        <p>Trabalhamos com diversas formas de pagamento para sua comodidade. O método <strong>Express</strong> é o recomendado para transferências instantâneas e maior agilidade no início do projeto.</p>
+        
+        <div class="metodo-pagamento-grid">
+          <span class="pagamento-item destaque-recomendado">Express (recomendado)</span>
+          <span class="pagamento-item">BAI (Banco Angolano de Investimentos)</span>
+          <span class="pagamento-item">BFA (Banco de Fomento Angola)</span>
+          <span class="pagamento-item">PayPal</span>
+          <span class="pagamento-item">Transferência bancária (outros bancos)</span>
+          <span class="pagamento-item">Depósito bancário</span>
+        </div>
+        
+        <ul class="lista-simples" style="margin-top: 1.8rem;">
+          <li><strong>Express:</strong> liquidação imediata, permite começar o projeto no mesmo dia útil.</li>
+          <li><strong>PayPal:</strong> aceitamos pagamentos internacionais (acrescido da taxa da plataforma).</li>
+          <li><strong>BAI / BFA:</strong> transferência standard, prazo de compensação de até 24h.</li>
+          <li>Para clientes empresariais, emitimos fatura/recibo após confirmação do pagamento.</li>
+        </ul>
+      </div>
+      
+      <!-- INFORMAÇÕES COMPLEMENTARES (apenas texto) -->
+      <div style="background-color: transparent; padding: 1rem 0 3rem;">
+        <p style="text-align: center; max-width: 800px; margin: 0 auto; color: var(--text-color);">
+          Ao contratar a <strong>Markendev</strong>, você recebe um cronograma detalhado e acesso a um painel de acompanhamento. 
+          Todos os contratos incluem suporte técnico de 30 dias após a entrega para correções de bugs.
+          <br><br>
+          Dúvidas sobre qual método se adequa ao seu projeto? Fale connosco na página de contacto.
+        </p>
+      </div>
+    </section>
+  </main>
+
+  <!--==================== FOOTER ====================-->
+  <footer class="footer">
+    <div class="footer__container container grid">
+      <a href="#" class="footer__logo"><i class="ri-global-line"></i> Markendev</a>
+      <div class="footer__content grid">
+        <a href="#" class="footer__link">Termos de uso</a>
+        <a href="#" class="footer__link">Política de privacidade</a>
+        <div class="footer__social">
+          <a href="https://www.linkedin.com/in/ag%C3%AAncia-markendev-570641402/" target="_blank">
+            <i class="ri-linkedin-fill"></i>
+          </a>
+          <a href="https://www.instagram.com/agenciamarkendev/" target="_blank">
+            <i class="ri-instagram-line"></i>
+          </a>
+          <a href="https://www.facebook.com/profile.php?id=61572337472913&locale=pt_BR" target="_blank">
+            <i class="ri-facebook-fill"></i>
+          </a>
+        </div>
+      </div>
+    </div>
+    <span class="footer__copy">
+      &#169; Todos os direitos reservados por markendev
+    </span>
+  </footer>
+
+  <!--========== SCROLL UP ==========-->
+  <a href="#" class="scrollup" id="scroll-up"> <i class="ri-arrow-up-long-line"></i></a>
+
+  <!--=============== JAVASCRIPT (menu mobile + scroll) ===============-->
+  <script>
+    (function() {
+      "use strict";
+      
+      // Menu mobile toggle (exatamente como você espera)
+      const navMenu = document.getElementById('nav-menu');
+      const navToggle = document.getElementById('nav-toggle');
+      
+      if (navToggle) {
+        navToggle.addEventListener('click', () => {
+          navMenu.classList.toggle('show-menu');
+        });
+      }
+      
+      // Fechar menu ao clicar em um link (mobile)
+      const navLinks = document.querySelectorAll('.nav__link');
+      navLinks.forEach(link => {
+        link.addEventListener('click', () => {
+          navMenu.classList.remove('show-menu');
+        });
+      });
+      
+      // Header com efeito scroll (scroll-header)
+      const header = document.getElementById('header');
+      window.addEventListener('scroll', () => {
+        if (window.scrollY >= 50) {
+          header.classList.add('scroll-header');
+        } else {
+          header.classList.remove('scroll-header');
+        }
+      });
+      
+      // Scroll up button
+      const scrollUp = document.getElementById('scroll-up');
+      window.addEventListener('scroll', () => {
+        if (window.scrollY >= 300) {
+          scrollUp.classList.add('show-scroll');
+        } else {
+          scrollUp.classList.remove('show-scroll');
+        }
+      });
+      
+      // Ativar link ativo baseado na página atual (destaque visual)
+      const currentLocation = window.location.pathname;
+      navLinks.forEach(link => {
+        const href = link.getAttribute('href');
+        if (href && currentLocation.includes('guia.html') && href.includes('guia.html')) {
+          link.style.color = 'var(--first-color)';
+        } else if (href && href !== '#' && currentLocation.includes(href.replace('.html',''))) {
+          link.style.color = 'var(--first-color)';
+        }
+      });
+    })();
+  </script>
+  
+  <!-- Pequeno ajuste para garantir que o menu não quebre em telas pequenas e que o ícone toggle funcione (já incluso) -->
+  <noscript>Seu navegador não suporta JavaScript, mas a navegação continua funcional.</noscript>
+</body>
+</html>

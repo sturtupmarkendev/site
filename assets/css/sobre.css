@@ -1,0 +1,340 @@
+@import url("variables.css");
+@import url("header.css");
+@import url("footer.css");
+@import url("card.css");
+
+/* ========== SOBRE (MOBILE FIRST) ========== */
+.sobre__container {
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+}
+
+.sobre__title {
+  font-size: var(--bigger-font-size);
+  color: var(--title-color);
+  line-height: 1.2;
+  margin-bottom: 1.5rem;
+  letter-spacing: -0.02em;
+  text-align: center;
+}
+
+.sobre__title span {
+  color: var(--first-color);
+  position: relative;
+  display: inline-block;
+}
+
+.sobre__description {
+  text-align: center;
+  font-size: 1.05rem;
+  color: var(--text-color);
+}
+
+/* ========== IMAGEM COM EFEITO QUADRADO AZUL (Z-INDEX) ========== */
+.sobre__img-wrapper {
+  position: relative;
+  display: inline-block;
+  width: 100%;
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+/* Quadrado azul decorativo atrás da imagem (z-index: 1) */
+.sobre__img-bg {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  width: 100%;
+  height: 100%;
+  background-color: var(--first-color);
+  border-radius: 2rem;
+  z-index: 1;
+  opacity: 0.5;
+  transition: all 0.3s ease;
+}
+
+/* Imagem principal (z-index: 10) */
+.sobre__img {
+  position: relative;
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  aspect-ratio: 4/3;
+  border-radius: 2rem;
+  box-shadow: var(--shadow-lg);
+  z-index: 10;
+  transition: transform 0.3s ease;
+}
+
+.sobre__img-wrapper:hover .sobre__img {
+  transform: translate(-4px, -4px);
+}
+
+.sobre__img-wrapper:hover .sobre__img-bg {
+  opacity: 0.8;
+  transform: translate(4px, 4px);
+}
+
+/**=============== CARD WORK ===============*/
+.empleyee__container {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem;
+  margin: 0 auto;
+}
+.empleyee__card {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: center;
+  width: 190px;
+  height: 200px;
+  border-radius: 1rem;
+  position: relative;
+  overflow: hidden;
+  transition: box-shadow 0.4s ease; /* Transição suave para o box-shadow */
+  transition: all 0.4s ease;
+}
+
+/* Imagem dentro do card - começa em preto e branco */
+.empleyee__card img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: grayscale(100%); /* Preto e branco */
+  transition: all 0.4s ease; /* Transição suave */
+}
+
+/* Hover: imagem volta à cor original */
+.empleyee__card:hover img {
+  filter: grayscale(0%); /* Cor original */
+}
+
+/* Hover: adiciona box-shadow no card */
+.empleyee__card:hover {
+  box-shadow:
+    0 0 15px 5px rgba(56, 143, 59, 0.5),
+    0 10px 20px rgba(0, 0, 0, 0.2);
+  /* Ou um box-shadow mais forte: */
+  /* box-shadow: 0 20px 35px -8px rgba(0, 0, 0, 0.3); */
+}
+
+/* Opcional: escala suave da imagem no hover */
+.empleyee__card:hover img {
+  transform: scale(1.1); /* Dá um zoom suave */
+}
+
+/* Mantém a div de dados acima da imagem */
+.empleyee__data {
+  width: 80%;
+  margin: 0 auto 15px auto;
+  background-color: var(--first-color);
+  border-radius: 0.5rem;
+  padding: 8px 0;
+  position: relative;
+  z-index: 2;
+  text-align: center;
+}
+
+.empleyee__name,
+.empleyee__work {
+  color: white;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+  margin: 0;
+  padding: 0 10px;
+}
+
+.empleyee__name {
+  margin-bottom: 4px;
+}
+
+.empleyee__work {
+  margin-bottom: 0;
+  font-size: 0.9rem;
+}
+
+/*=============== BREAKPOINTS ===============*/
+/* For small devices */
+@media screen and (max-width: 360px) {
+  .container {
+    margin-inline: 1rem;
+  }
+
+  .footer__social {
+    grid-column: 1;
+  }
+
+  .footer__content {
+    grid-template-columns: 1fr;
+    justify-items: center;
+  }
+
+  .empleyee__container {
+    grid-template-columns: repeat(1, 1fr);
+  }
+}
+
+/* For medium devices */
+@media screen and (min-width: 540px) {
+  .sobre__img-bg {
+    left: 20px;
+    top: 20px;
+  }
+  .nav__menu {
+    width: 50%;
+  }
+  .sobre__img-col {
+    margin: 0 auto;
+    width: 380px;
+  }
+
+  .sobre__container {
+    display: grid;
+    grid-template-columns: 600px;
+    justify-content: center;
+  }
+
+  .sobre__title {
+    font-size: 2.4rem;
+  }
+
+  .sobre__img-wrapper {
+    max-width: 100%;
+  }
+
+  .footer__social {
+    grid-column: initial;
+  }
+
+  .footer__content {
+    grid-template-columns: repeat(3, 1fr);
+    align-items: center;
+  }
+
+  .footer__link:nth-child(1) {
+    justify-self: start;
+  }
+
+  .footer__link:nth-child(2) {
+    order: 2;
+    justify-self: end;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .empleyee__container {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2.5rem;
+  }
+}
+
+/* For large devices */
+@media screen and (min-width: 1150px) {
+  .container {
+    margin-inline: auto;
+  }
+
+  .section__title {
+    margin-bottom: 3.5rem;
+  }
+
+  .nav {
+    height: calc(var(--header-height) + 2rem);
+  }
+
+  .nav__toggle {
+    display: none;
+  }
+
+  .nav__list {
+    flex-direction: row;
+    column-gap: 4rem;
+  }
+
+  .nav__theme {
+    position: initial;
+    font-size: 1.5rem;
+  }
+
+  .sobre__img-col {
+    width: auto;
+  }
+
+  .nav__menu {
+    width: initial;
+    display: flex;
+    column-gap: 4rem;
+    align-items: center;
+  }
+
+  .footer {
+    padding-block: 5rem 3rem;
+  }
+
+  .footer__container {
+    row-gap: 3.5rem;
+  }
+  .sobre__description {
+    max-width: 550px;
+  }
+  .sobre__container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    gap: 5rem;
+    margin-top: 6rem;
+  }
+
+  .sobre__content {
+    order: 1;
+  }
+
+  .sobre__img-col {
+    order: 2;
+  }
+
+  .sobre__title {
+    font-size: 3.2rem;
+    margin-bottom: 1.8rem;
+    text-align: initial;
+  }
+
+  .sobre__description {
+    font-size: 1.15rem;
+    max-width: 500px;
+    text-align: initial;
+  }
+
+  .sobre__img-wrapper {
+    max-width: 100%;
+  }
+
+  .sobre__img-bg {
+    border-radius: 2.5rem;
+  }
+
+  .sobre__img {
+    border-radius: 2.5rem;
+  }
+
+  .empleyee__container {
+    display: grid;
+    grid-template-columns: repeat(4, 210px); /* Largura fixa dos cards */
+    justify-content: space-between; /* Espaço entre os cards */
+    gap: 20px; /* Espaçamento opcional entre linhas e colunas */
+    width: 100%;
+    row-gap: 2rem;
+    margin: 0 auto;
+  }
+
+  .empleyee__card {
+    width: 210px;
+    height: 270px;
+  }
+}
+
+/* For 2K resolutions (2048 x 1152, 2048 x 1536) */
